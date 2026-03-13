@@ -22,7 +22,7 @@ let s:number = '#4DA3FF' " 202
 " The colors should transition well while keeping Function & Constant distinct
 let s:module = '#FF6FAE' " '#9963DF'
 let s:type = '#B983FF'
-let s:function = '#57C7FF' " '#5D73dF' " '#5F87FF' #5FE1C5 #7EE7D4 #39C6A6
+let s:function = '#F7a777' " '#5D73dF' " '#5F87FF' #5FE1C5 #7EE7D4 #39C6A6
 let s:constant = '#5F87FF' " '#5FE1C5'
 
 let s:variable = '#D6CFFF'
