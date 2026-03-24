@@ -29,6 +29,8 @@ let s:variable = '#D6CFFF'
 let s:operator = '#FF5C8A'
 let s:preproc = '#FF5C8A' " '#8A5CFF'
 let s:todo = '#39C6A6'
+let s:error = '#FF3333'
+let s:warning = '#FFB347'
 
 " #FF4D6D → #FF6FAE → #B983FF → #5F87FF → #4DA3FF → #57C7FF  #4DD0E1 #3FD6C6  #39C6A6 
 "
@@ -82,6 +84,25 @@ if &background == 'dark'
     call s:HL('String', s:string) " 167
     call s:HL('Function', s:function, 'NONE')
     call s:HL('Visual', 'NONE', s:visual)
+
+    " LSP Diagnostics
+    call s:HL('DiagnosticError',           s:error)
+    call s:HL('DiagnosticWarn',            s:warning)
+    call s:HL('DiagnosticInfo',            s:string)
+    call s:HL('DiagnosticHint',            s:type)
+    call s:HL('DiagnosticVirtualTextError', s:error)
+    call s:HL('DiagnosticVirtualTextWarn',  s:warning)
+    call s:HL('DiagnosticVirtualTextInfo',  s:string)
+    call s:HL('DiagnosticVirtualTextHint',  s:type)
+    call s:HL('DiagnosticSignError',        s:error)
+    call s:HL('DiagnosticSignWarn',         s:warning)
+    call s:HL('DiagnosticSignInfo',         s:string)
+    call s:HL('DiagnosticSignHint',         s:type)
+    execute 'hi DiagnosticUnderlineError guifg=NONE guibg=NONE gui=undercurl guisp=' . s:error
+    execute 'hi DiagnosticUnderlineWarn  guifg=NONE guibg=NONE gui=undercurl guisp=' . s:warning
+    execute 'hi DiagnosticUnderlineInfo  guifg=NONE guibg=NONE gui=undercurl guisp=' . s:string
+    execute 'hi DiagnosticUnderlineHint  guifg=NONE guibg=NONE gui=undercurl guisp=' . s:type
+
     hi Pmenu        ctermfg=NONE ctermbg=NONE cterm=NONE      guifg=NONE    guibg=NONE    gui=NONE
     hi PmenuSel     ctermfg=NONE ctermbg=59   cterm=NONE      guifg=NONE    guibg=#49483e gui=NONE
     hi CursorColumn ctermfg=NONE ctermbg=237  cterm=NONE      guifg=NONE    guibg=#3c3d37 gui=NONE
@@ -113,8 +134,8 @@ hi DiffAdd      ctermfg=231  ctermbg=64   cterm=bold      guifg=#f8f8f2 guibg=#4
 hi DiffDelete   ctermfg=88   ctermbg=NONE cterm=NONE      guifg=#8b0807 guibg=NONE    gui=NONE
 hi DiffChange   ctermfg=NONE ctermbg=NONE cterm=NONE      guifg=#f8f8f2 guibg=#243955 gui=NONE
 hi DiffText     ctermfg=231  ctermbg=24   cterm=bold      guifg=#f8f8f2 guibg=#204a87 gui=bold
-hi ErrorMsg     ctermfg=231  ctermbg=197  cterm=NONE      guifg=#f8f8f0 guibg=#aa0000 gui=NONE
-hi WarningMsg   ctermfg=3    ctermbg=197  cterm=NONE      guifg=#f8f8f0 guibg=#aa0000 gui=NONE
+hi ErrorMsg     ctermfg=204  ctermbg=NONE cterm=bold      guifg=#FF3333 guibg=NONE    gui=bold
+hi WarningMsg   ctermfg=214  ctermbg=NONE cterm=NONE      guifg=#FFB347 guibg=NONE    gui=NONE
 call s:HL('Keyword', s:keyword, 'NONE')
 hi Label        ctermfg=186  ctermbg=NONE cterm=NONE      guifg=#e6db74 guibg=NONE    gui=NONE
 hi NonText      ctermfg=NONE ctermbg=NONE cterm=NONE      guifg=#49483e guibg=NONE    gui=NONE
